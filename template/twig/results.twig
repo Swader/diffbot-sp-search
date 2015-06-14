@@ -1,0 +1,26 @@
+{% if results is not empty %}
+<hr>
+<div class="results">
+    {% for article in results %}
+
+        <div class="Media post">
+                <img class="Media-figure"
+                     src="{{ attribute(article.meta.og, 'og:image') is defined ? attribute(article.meta.og, 'og:image') : '/apple-touch-icon.png'}}" alt="">
+
+
+            <div class="Media-body">
+                <h3><a target="_blank"
+                       href="{{ article.pageUrl }}">{{ article.title }}</a></h3>
+
+                <p class="author">Written by {{ article.author }}, published on {{ article.date|date("jS F, Y") }}</p>
+
+                <p class="description">{{ article.meta.description }}</p>
+            </div>
+        </div>
+
+    {% else %}
+        <p>No results :(</p>
+
+    {% endfor %}
+</div>
+{% endif %}

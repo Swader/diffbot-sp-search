@@ -1,0 +1,53 @@
+{% if paginationData.pageCount > 1 %}
+    <nav>
+        <ul class="pagination">
+            {% if paginationData.currentPage != 1 %}
+                <li><a href="/{{ qprw({ 'page': 1 }) }}">&laquo;&nbsp;First</a></li>
+            {% else %}
+                <li class="disabled">
+                    <span>&laquo;&nbsp;{{ 'First' }}</span>
+                </li>
+            {% endif %}
+
+            {% if paginationData.previousPage %}
+                <li><a href="/{{ qprw({ 'page': paginationData.currentPage - 1 }) }}">&lsaquo;&nbsp; Previous</a></li>
+            {% else %}
+                <li class="disabled">
+                    <span>&lsaquo;&nbsp;{{ 'Previous' }}</span>
+                </li>
+            {% endif %}
+
+
+            {% for page in paginationData.pagesInRange %}
+                {% if page != paginationData.currentPage %}
+                    <li>
+                        <a href="/{{ qprw({ 'page': page }) }}">{{ page }}</a>
+                    </li>
+                {% else %}
+                    <li class="active">
+                        <span>{{ page }}</span>
+                    </li>
+                {% endif %}
+
+            {% endfor %}
+
+
+            {% if paginationData.nextPage %}
+                <li><a href="/{{ qprw({ 'page': paginationData.currentPage + 1 }) }}">Next&nbsp;&rsaquo;</a></li>
+            {% else %}
+                <li class="disabled">
+                    <span>{{ 'Next' }}&nbsp;&rsaquo;</span>
+                </li>
+            {% endif %}
+
+            {% if paginationData.currentPage != paginationData.pageCount %}
+                <li><a href="/{{ qprw({ 'page': paginationData.pageCount }) }}">Last ({{ paginationData.pageCount }})&nbsp;&raquo;</a></li>
+            {% else %}
+                <li class="disabled">
+                    <span>{{ 'Last' }}&nbsp;&raquo;</span>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+{% endif %}

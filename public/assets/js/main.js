@@ -1,0 +1,28 @@
+$(document).ready(function () {
+
+    $('form.submit-once').submit(function(e){
+        if( $(this).hasClass('form-submitted') ){
+            e.preventDefault();
+            return;
+        }
+        $(this).addClass('form-submitted');
+        $('#submit').addClass('disabled');
+    });
+
+    var dsg = $('.detailed-search-group');
+    var ms = $('.main-search');
+
+    if (localStorage.getItem('detailed-on') == "true") {
+        dsg.show();
+        ms.hide();
+    } else {
+        dsg.hide();
+        ms.show();
+    }
+
+    $(".detailed-search").click(function (e) {
+        ms.toggle();
+        dsg.toggle();
+        localStorage.setItem('detailed-on', dsg.is(':visible'));
+    });
+});

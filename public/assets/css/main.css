@@ -1,0 +1,114 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: arial,sans-serif;
+}
+
+div.content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+div.content.what {
+    max-width: 500px;
+    margin: auto;
+}
+
+div.hidden {
+    display: none;
+}
+
+div.search-form {
+    width: 80%;
+}
+
+.results {
+    max-width: 600px;
+    font-size: small;
+}
+
+footer {
+    padding: 1.5rem;
+    background: #404040;
+    color: #999;
+    font-size: .85em;
+    text-align: center;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+}
+
+img.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: -60px;
+    left: 0;
+
+    z-index: -1000;
+
+    opacity: 0.05;
+    filter: alpha(opacity=5);
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+    img.bg {
+        left: 50%;
+        margin-left: -512px;   /* 50% */
+    }
+}
+
+.Media h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.Media h3 a {
+    text-decoration: none;
+    color: #1a0dab;
+}
+
+.Media h3 a:visited {
+    color: #609;
+}
+
+.Media h3 a:hover {
+    text-decoration: underline;
+}
+
+.Media {
+    display: flex;
+    align-items: flex-start;
+    width: 530px;
+}
+
+.Media.post {
+    margin-bottom: 23px;
+}
+
+.Media-figure {
+    margin-right: 1em;
+    width: 50px;
+}
+
+.Media-body {
+    flex: 1;
+}
+
+.Media .description {
+    line-height: 1.4;
+    word-wrap: break-word;
+    color: #545454;
+}

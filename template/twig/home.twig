@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SitePoint Search</title>
+    <meta name="description" content="Diffbot-powered SitePoint Search Engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/bower_components/normalize.css/normalize.css">
+    <link rel="stylesheet"
+          href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css" />
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.ie.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+</head>
+<body>
+<div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+        <a href="https://github.com/swader/diffbot-sp-search">Fork me on GitHub</a>
+    </div>
+</div>
+<img src="/assets/img/sp_square.png" alt="" class="bg"/>
+<header>
+    <h3>SitePoint
+        <small>search</small>
+    </h3>
+</header>
+<div class="content">
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong>
+        browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to
+        improve
+        your experience.</p>
+    <![endif]-->
+
+
+    <div class="search-form">
+        <form id="main-form" class="submit-once">
+
+            <div class="main-search form-group">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" id="q"
+                           placeholder="Full search query"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"
+                            data-toggle="modal"
+                            data-target="#examples-table">?
+                    </button>
+                </span>
+                </div>
+                <a href="#" class="small detailed-search">>> Toggle Detailed
+                    searching</a>
+            </div>
+
+            <div class="detailed-search-group" style="display: none;">
+                <div class="form-group">
+                    <label for="authorinput">Author(s): </label><input
+                            class="form-control"
+                            id="authorinput"
+                            name="authors"
+                            type="text"
+                            placeholder="Bruno Skvorc"/>
+                </div>
+                <div class="form-group">
+                    <label for="kanyinput">Keywords (any): </label><input
+                            class="form-control"
+                            id="kanyinput"
+                            name="keywords_any"
+                            type="text"
+                            placeholder="sitepoint, diffbot, whatever"/>
+                </div>
+                <div class="form-group">
+                    <label for="kallinput">Keywords (all): </label><input
+                            class="form-control"
+                            id="kallinput"
+                            name="keywords_all"
+                            type="text"
+                            placeholder="sitepoint, diffbot, whatever"/>
+                    <a href="#" class="small detailed-search">>> Toggle Detailed
+                        searching</a>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <input id="submit" class="btn btn-default" type="submit"
+                       value="Search" name="search"/>
+            </div>
+
+        </form>
+        {% include 'results.twig' %}
+
+        {% include 'pagination.twig' %}
+    </div>
+
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    {% include 'google-analytics.twig' %}
+
+</div>
+<footer>
+    <a href="what.html">What's this all about?</a>
+    <br>-<br>
+    Built by <a href="https://twitter.com/bitfalls">@bitfalls</a> for <a
+            href="http://sitepoint.com">SitePoint</a>. Hosted on <a
+            href="http://bit.ly/do-ref">DigitalOcean</a>.
+</footer>
+
+{% include "modal-examples.twig" %}
+
+
+</body>
+</html>
