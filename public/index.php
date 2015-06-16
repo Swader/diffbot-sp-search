@@ -62,7 +62,12 @@ if (isset($queryParams['search'])) {
     $uniques = [];
     /** @var Article $article */
     foreach ($results as $i => $article) {
-        
+
+        if (strpos($article->getResolvedPageUrl(), '/sass-reference/')) {
+            $results->offsetUnset($i);
+            continue;
+        }
+
         if (in_array($article->getResolvedPageUrl(), $uniques)) {
             $results->offsetUnset($i);
             continue;
