@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2a037cf40445975ebcfdeb9823a86fb8",
+    "hash": "67e9ee39ee41d96447d1a23de9480a16",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -211,16 +211,16 @@
         },
         {
             "name": "swader/diffbot-php-client",
-            "version": "0.4.1",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Swader/diffbot-php-client.git",
-                "reference": "0ada55f4ce87f4f534c93b6d9044aca868b45fd5"
+                "reference": "cb8ceae5fb31cfae0b36c93cd9847db38c8985d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Swader/diffbot-php-client/zipball/0ada55f4ce87f4f534c93b6d9044aca868b45fd5",
-                "reference": "0ada55f4ce87f4f534c93b6d9044aca868b45fd5",
+                "url": "https://api.github.com/repos/Swader/diffbot-php-client/zipball/cb8ceae5fb31cfae0b36c93cd9847db38c8985d3",
+                "reference": "cb8ceae5fb31cfae0b36c93cd9847db38c8985d3",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4-dev"
+                    "dev-master": "0.5-dev"
                 }
             },
             "autoload": {
@@ -262,7 +262,7 @@
                 "diffbot",
                 "wrapper"
             ],
-            "time": "2015-06-13 11:28:22"
+            "time": "2015-06-16 06:44:11"
         },
         {
             "name": "twig/twig",
@@ -327,12 +327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Webiny/Htpl.git",
-                "reference": "8ee9c378fc6092ea29e4fd38547e8628d3280748"
+                "reference": "1056821594ec2772500b3a609ca14394da6bfdb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Webiny/Htpl/zipball/8ee9c378fc6092ea29e4fd38547e8628d3280748",
-                "reference": "8ee9c378fc6092ea29e4fd38547e8628d3280748",
+                "url": "https://api.github.com/repos/Webiny/Htpl/zipball/1056821594ec2772500b3a609ca14394da6bfdb3",
+                "reference": "1056821594ec2772500b3a609ca14394da6bfdb3",
                 "shasum": ""
             },
             "require": {
@@ -370,59 +370,10 @@
                 "source": "https://github.com/Webiny/Htpl/tree/master",
                 "issues": "https://github.com/Webiny/Htpl/issues"
             },
-            "time": "2015-06-11 12:56:55"
+            "time": "2015-06-14 15:25:58"
         }
     ],
     "packages-dev": [
-        {
-            "name": "psr/http-message",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "time": "2015-05-04 20:22:00"
-        },
         {
             "name": "symfony/var-dumper",
             "version": "v2.7.1",

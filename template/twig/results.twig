@@ -5,12 +5,13 @@
 
         <div class="Media post">
                 <img class="Media-figure"
-                     src="{{ attribute(article.meta.og, 'og:image') is defined ? attribute(article.meta.og, 'og:image') : '/apple-touch-icon.png'}}" alt="">
+                     {#src="{{ attribute(article.meta.og, 'og:image') is defined ? attribute(article.meta.og, 'og:image') : '/apple-touch-icon.png'}}" alt="">#}
+                     src="{{ article.heroImage.url }}" alt="{{ article.heroImage.title }}">
 
 
             <div class="Media-body">
                 <h3><a target="_blank"
-                       href="{{ article.pageUrl }}">{{ article.title }}</a></h3>
+                       href="{{ article.resolvedPageUrl }}">{{ article.title }}</a></h3>
 
                 <p class="author">Written by {{ article.author }}, published on {{ article.date|date("jS F, Y") }}</p>
 

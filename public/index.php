@@ -3,6 +3,7 @@
 use SitePoint\Helpers\PaginationHelper;
 use SitePoint\Helpers\SearchHelper;
 use Swader\Diffbot\Diffbot;
+use Swader\Diffbot\Entity\Article;
 
 require_once '../vendor/autoload.php';
 require_once '../token.php';
@@ -10,7 +11,7 @@ require_once '../token.php';
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/../template/twig');
 $twig = new Twig_Environment($loader
 //   , array('cache' => __DIR__ . '/../cache',)
-   , array('cache' => false, 'debug' => true)
+    , array('cache' => false, 'debug' => true)
 );
 
 $function = new Twig_SimpleFunction('qprw', function (array $replacements) {
@@ -18,7 +19,8 @@ $function = new Twig_SimpleFunction('qprw', function (array $replacements) {
     foreach ($replacements as $k => $v) {
         $qp[$k] = $v;
     }
-    return '?'.http_build_query($qp);
+
+    return '?' . http_build_query($qp);
 });
 $twig->addFunction($function);
 
@@ -27,7 +29,7 @@ $vars = [];
 // Get query params from request
 parse_str($_SERVER['QUERY_STRING'], $queryParams);
 
-$resultsPerPage = 20;
+$resultsPerPage = 50;
 $pageRange = 9;
 
 if (!isset($queryParams['page'])) {
@@ -50,12 +52,52 @@ if (isset($queryParams['search'])) {
         ->search($string)
         ->setCol('sp_search')
         ->setStart(($queryParams['page'] - 1) * $resultsPerPage)
-        ->setNum($resultsPerPage)
-    ;
+        ->setNum($resultsPerPage);
 
     // Add to template for rendering
     $results = $search->call();
     $info = $search->call(true);
+
+    $i = 0;
+    foreach ($results as $a) {
+        dump($i.': '.$a->getTitle());
+        //dump($a);
+        $i++;
+    }
+    dump($i);
+    dump('---------------------');
+
+    // Clean up and alter results
+    $uniques = [];
+    /** @var Article $article */
+    foreach ($results as $i => $article) {
+
+
+        dump($i . ' : ' . $article->getTitle());
+        dump($uniques);
+
+        if (in_array($article->getResolvedPageUrl(), $uniques)) {
+            $results->offsetUnset($i);
+            continue;
+        } else {
+            $uniques[] = $article->getResolvedPageUrl();
+        }
+
+        if (count($article->getImages())) {
+            $article->heroImage = $article->getImages()[0];
+        } elseif (isset($article->getMeta()['og']['og:image'])) {
+            $article->heroImage = $article->getMeta()['og']['og:image'];
+        } elseif (isset($article->getData()['icon'])) {
+            $article->heroImage = [
+                'url' => $article->getData()['icon'],
+                'title' => 'Channel icon'
+            ];
+        } else {
+            $article->heroImage = '/apple-touch-icon.png';
+        }
+    }
+
+
 
     $ph = new PaginationHelper();
     $vars = [

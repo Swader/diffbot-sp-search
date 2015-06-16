@@ -3,7 +3,7 @@
 Contributions are **welcome** and will be fully **credited**.
 Send Pull Requests or open issues please.
 
-Active TODOs can be seen [here](TODO.md).
+See repo issues for ideas.
 
 ## Pull Requests
 

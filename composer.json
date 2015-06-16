@@ -1,15 +1,9 @@
 {
     "require": {
-        "swader/diffbot-php-client": "^0.4.0",
         "webiny/htpl": "dev-master",
-        "twig/twig": "^1.18"
+        "twig/twig": "^1.18",
+        "swader/diffbot-php-client": "^0.4.3"
     },
-    "repositories": [
-     	{
-        	"type": "vcs",
-        	"url": "https://github.com/webiny/htpl"
-	}
-    ],
   "autoload": {
     "psr-4": {
       "SitePoint\\Helpers\\": "app/Helpers/"
