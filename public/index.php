@@ -58,24 +58,11 @@ if (isset($queryParams['search'])) {
     $results = $search->call();
     $info = $search->call(true);
 
-    $i = 0;
-    foreach ($results as $a) {
-        dump($i.': '.$a->getTitle());
-        //dump($a);
-        $i++;
-    }
-    dump($i);
-    dump('---------------------');
-
     // Clean up and alter results
     $uniques = [];
     /** @var Article $article */
     foreach ($results as $i => $article) {
-
-
-        dump($i . ' : ' . $article->getTitle());
-        dump($uniques);
-
+        
         if (in_array($article->getResolvedPageUrl(), $uniques)) {
             $results->offsetUnset($i);
             continue;
