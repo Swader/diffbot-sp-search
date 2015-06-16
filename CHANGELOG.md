@@ -1,6 +1,10 @@
 #Changelog
 All notable changes will be documented in this file
 
+## 0.2.2 - June 16th, 2015
+
+- some CSS fixes for cross browser support mainly
+
 ## 0.2.1 - June 16th, 2015
 
 - fixed the "No results" message (was not displayed previously)

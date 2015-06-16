@@ -24,7 +24,7 @@ $function = new Twig_SimpleFunction('qprw', function (array $replacements) {
 });
 $twig->addFunction($function);
 
-$vars = [];
+$vars = ['showResults' => false];
 
 // Get query params from request
 parse_str($_SERVER['QUERY_STRING'], $queryParams);
@@ -93,6 +93,7 @@ if (isset($queryParams['search'])) {
 
     $ph = new PaginationHelper();
     $vars = [
+        'showResults' => true,
         'results' => $results,
         'info' => $info,
         'paginationData' => $ph->getPaginationData(
