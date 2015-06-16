@@ -1,3 +1,4 @@
+body{height:1px;}
 body {
     display: -webkit-box;
     display: -moz-box;
@@ -5,7 +6,8 @@ body {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;    min-height: 100vh;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     font-family: arial,sans-serif;
 }
 
@@ -16,11 +18,11 @@ div.content {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
-    -webkit-box-flex: 1 1 0%;
-    -moz-box-flex: 1 1 0%;
-    -webkit-flex: 1 1 0%;
-    -ms-flex: 1 1 0%;
-    flex: 1 1 0%;
+    -webkit-box-flex: 1 1 100%;
+    -moz-box-flex: 1 1 100%;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
     align-items: center;
     justify-content: center;
 }
@@ -44,7 +46,13 @@ div.search-form {
 }
 
 footer {
-    padding: 1.5rem;
+    align-self:flex-end;
+    -webkit-box-flex: 1 0 100%;
+    -moz-box-flex: 1 0 100%;
+    -webkit-flex: 1 0 100%;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%;
+    padding: 1.5rem 0;
     background: #404040;
     color: #999;
     font-size: .85em;
@@ -53,6 +61,11 @@ footer {
 
 header {
     text-align: center;
+    -webkit-box-flex: 1 1 100%;
+    -moz-box-flex: 1 1 100%;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
 }
 
 img.bg {
@@ -106,7 +119,8 @@ img.bg {
     display: -ms-flexbox;
     display: -moz-flex;
     display: -webkit-flex;
-    display: flex;    align-items: flex-start;
+    display: flex;
+    align-items: flex-start;
     width: 530px;
 }
 

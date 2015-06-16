@@ -100,7 +100,6 @@ if (isset($queryParams['search'])) {
             $queryParams['page'], $resultsPerPage, $pageRange, $results, $info
         )
     ];
-
 }
 
 echo $twig->render('home.twig', $vars);
