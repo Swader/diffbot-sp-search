@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "67e9ee39ee41d96447d1a23de9480a16",
+    "hash": "305450a4d308ffa85123f79deaa6d671",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -211,16 +211,16 @@
         },
         {
             "name": "swader/diffbot-php-client",
-            "version": "0.4.3",
+            "version": "0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Swader/diffbot-php-client.git",
-                "reference": "cb8ceae5fb31cfae0b36c93cd9847db38c8985d3"
+                "reference": "27eb8e9943b0e7b15917151986f3d0a4e0b0e6af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Swader/diffbot-php-client/zipball/cb8ceae5fb31cfae0b36c93cd9847db38c8985d3",
-                "reference": "cb8ceae5fb31cfae0b36c93cd9847db38c8985d3",
+                "url": "https://api.github.com/repos/Swader/diffbot-php-client/zipball/27eb8e9943b0e7b15917151986f3d0a4e0b0e6af",
+                "reference": "27eb8e9943b0e7b15917151986f3d0a4e0b0e6af",
                 "shasum": ""
             },
             "require": {
@@ -242,7 +242,11 @@
                     "Swader\\Diffbot\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Swader\\Diffbot\\Test\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -262,7 +266,11 @@
                 "diffbot",
                 "wrapper"
             ],
-            "time": "2015-06-16 06:44:11"
+            "support": {
+                "source": "https://github.com/Swader/diffbot-php-client/tree/0.4.4",
+                "issues": "https://github.com/Swader/diffbot-php-client/issues"
+            },
+            "time": "2015-06-16 12:35:29"
         },
         {
             "name": "twig/twig",

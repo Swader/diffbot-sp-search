@@ -37,12 +37,22 @@ class SearchHelper
         if (isset($queryParams['authors']) && !empty($queryParams['authors'])) {
 
             $authors = array_map(function ($item) {
-                return 'author:"' . trim($item) . '"';
+
+                $authorFragments = explode(' ', trim($item));
+
+                $string = 'author:'.$authorFragments[0];
+                if (count($authorFragments) > 1) {
+                    unset($authorFragments[0]);
+                    $string .= ' AND author:' . implode(' AND author:', $authorFragments);
+                }
+                return '('.$string.')';
+
+                //return 'author:"' . trim($item) . '"';
             }, explode(',', $queryParams['authors']));
 
             $this->strings[] = '(' . ((count($authors) > 1)
                     ? implode(' OR ', $authors)
-                    : $authors[0]) . ')';
+                    : trim($authors[0], '()')) . ')';
         }
     }
 
