@@ -11,6 +11,7 @@ class SearchHelper
     {
         $this->authorCheck($queryParams);
         $this->keywordCheck($queryParams);
+        $this->twitterCheck($queryParams);
         $this->sortCheck($queryParams);
 
         if (empty($this->strings)) {
@@ -46,13 +47,25 @@ class SearchHelper
                     $string .= ' AND author:' . implode(' AND author:', $authorFragments);
                 }
                 return '('.$string.')';
-
-                //return 'author:"' . trim($item) . '"';
             }, explode(',', $queryParams['authors']));
 
             $this->strings[] = '(' . ((count($authors) > 1)
                     ? implode(' OR ', $authors)
                     : trim($authors[0], '()')) . ')';
+        }
+    }
+
+    protected function twitterCheck(array $queryParams)
+    {
+        if (isset($queryParams['twitter']) && !empty($queryParams['twitter'])) {
+
+            $twitters = array_map(function ($item) {
+                return 'meta.twitter.twitter.creator:"@' . trim($item, '@ ').'"';
+            }, explode(',', $queryParams['twitter']));
+
+            $this->strings[] = '(' . ((count($twitters) > 1)
+                    ? implode(' OR ', $twitters)
+                    : trim($twitters[0], '()')) . ')';
         }
     }
 

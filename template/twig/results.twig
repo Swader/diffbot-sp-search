@@ -1,26 +1,36 @@
-{% if results is not empty %}
-<hr>
-<div class="results">
-    {% for article in results %}
+{% if showResults %}
+    <hr>
+    <div class="result-info">
+        {% if results is empty %}
+            <p>No articles matching the criteria found</p>
+        {% else %}
+            <p>{{ info.hits }} total hits</p>
+        {% endif %}
+    </div>
+    {% if results is not empty %}
+        <hr>
+        <div class="results">
+            {% for article in results %}
 
-        <div class="Media post">
-                <img class="Media-figure"
-                     {#src="{{ attribute(article.meta.og, 'og:image') is defined ? attribute(article.meta.og, 'og:image') : '/apple-touch-icon.png'}}" alt="">#}
-                     src="{{ article.heroImage.url }}" alt="{{ article.heroImage.title }}">
+                <div class="Media post">
+                    <img class="Media-figure"
+                            {#src="{{ attribute(article.meta.og, 'og:image') is defined ? attribute(article.meta.og, 'og:image') : '/apple-touch-icon.png'}}" alt="">#}
+                         src="{{ article.heroImage.url }}"
+                         alt="{{ article.heroImage.title }}">
 
 
-            <div class="Media-body">
-                <h3><a target="_blank"
-                       href="{{ article.resolvedPageUrl }}">{{ article.title }}</a></h3>
+                    <div class="Media-body">
+                        <h3><a target="_blank"
+                               href="{{ article.resolvedPageUrl }}">{{ article.title }}</a>
+                        </h3>
 
-                <p class="author">Written by {{ article.author }}, published on {{ article.date|date("jS F, Y") }}</p>
+                        <p class="author">Written by {{ article.author }}, published on {{ article.date|date("jS F, Y") }}</p>
 
-                <p class="description">{{ article.meta.description }}</p>
-            </div>
+                        <p class="description">{{ article.meta.description }}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
         </div>
-
-    {% endfor %}
-</div>
-{% else %}
-    <p>No results :(</p>
+    {% endif %}
 {% endif %}

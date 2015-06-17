@@ -8,7 +8,7 @@ use Swader\Diffbot\Entity\Article;
 require_once '../vendor/autoload.php';
 require_once '../token.php';
 
-$loader = new Twig_Loader_Filesystem(__DIR__ . '/../template/twig');
+$loader = new Twig_Loader_Filesystem(__DIR__ . '/../template');
 $twig = new Twig_Environment($loader
 //   , array('cache' => __DIR__ . '/../cache',)
     , array('cache' => false, 'debug' => true)
@@ -53,6 +53,8 @@ if (isset($queryParams['search'])) {
         ->setCol('sp_search')
         ->setStart(($queryParams['page'] - 1) * $resultsPerPage)
         ->setNum($resultsPerPage);
+
+    //die($search->buildUrl());
 
     // Add to template for rendering
     $results = $search->call();
@@ -102,4 +104,4 @@ if (isset($queryParams['search'])) {
     ];
 }
 
-echo $twig->render('home.twig', $vars);
+echo $twig->render('twig/home.twig', $vars);

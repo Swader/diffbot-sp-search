@@ -1,6 +1,13 @@
 #Changelog
 All notable changes will be documented in this file
 
+## 0.3 - June 17th, 2015
+
+- ability to search by Twitter handle (experimental)
+- result information bar added, currently only contains count of total hits
+- extracted some template fragments
+- minor changes to examples modal
+
 ## 0.2.2 - June 16th, 2015
 
 - some CSS fixes for cross browser support mainly
