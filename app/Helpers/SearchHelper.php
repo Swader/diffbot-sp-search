@@ -41,12 +41,14 @@ class SearchHelper
 
                 $authorFragments = explode(' ', trim($item));
 
-                $string = 'author:'.$authorFragments[0];
+                $string = 'author:' . $authorFragments[0];
                 if (count($authorFragments) > 1) {
                     unset($authorFragments[0]);
-                    $string .= ' AND author:' . implode(' AND author:', $authorFragments);
+                    $string .= ' AND author:' . implode(' AND author:',
+                            $authorFragments);
                 }
-                return '('.$string.')';
+
+                return '(' . $string . ')';
             }, explode(',', $queryParams['authors']));
 
             $this->strings[] = '(' . ((count($authors) > 1)
@@ -60,7 +62,8 @@ class SearchHelper
         if (isset($queryParams['twitter']) && !empty($queryParams['twitter'])) {
 
             $twitters = array_map(function ($item) {
-                return 'meta.twitter.twitter.creator:"@' . trim($item, '@ ').'"';
+                return 'meta.twitter.twitter.creator:"@' . trim($item,
+                    '@ ') . '"';
             }, explode(',', $queryParams['twitter']));
 
             $this->strings[] = '(' . ((count($twitters) > 1)
@@ -92,7 +95,9 @@ class SearchHelper
         }
 
         if (!empty($kall)) {
-            $string .= ' AND ';
+            if (!empty($kany)) {
+                $string .= ' AND ';
+            }
             $string .= (count($kall) > 1) ? implode(' AND ', $kall) : $kall[0];
         }
 

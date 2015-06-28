@@ -1,0 +1,51 @@
+.Media h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.Media h3 a {
+    text-decoration: none;
+    color: #1a0dab;
+}
+
+.Media h3 a:visited {
+    color: #609;
+}
+
+.Media h3 a:hover {
+    text-decoration: underline;
+}
+
+.Media {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    width: 530px;
+}
+
+.Media.post {
+    margin-bottom: 23px;
+}
+
+.Media-figure {
+    margin-right: 1em;
+    width: 50px;
+}
+
+.Media-body {
+    -webkit-box-flex: 1 1 0%;
+    -moz-box-flex: 1 1 0%;
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+}
+
+.Media .description {
+    line-height: 1.4;
+    word-wrap: break-word;
+    color: #545454;
+}

@@ -1,6 +1,6 @@
 {% include "common/head.html" %}
 
-<body>
+<body class="HolyGrail">
 
 {% include "common/ribbon.html" %}
 
@@ -8,45 +8,24 @@
 
 {% include "common/header.html" %}
 
-<div class="content">
+<div class="content HolyGrail-body">
 
-    {% include "common/browserupgrade.html" %}
-
-    <div class="search-form">
-        <form id="main-form" class="submit-once">
-
-            {% include "twig/controls/main.twig" %}
-
-            <div class="detailed-search-group" style="display: none;">
-                {% include "twig/controls/authors.twig" %}
-                {% include "twig/controls/keywords.twig" %}
-                {% include "twig/controls/twitter.twig" %}
-                {% include "twig/controls/detailedtoggle.twig" %}
-            </div>
-
-            <div class="form-group">
-                <input id="submit" class="btn btn-default" type="submit"
-                       value="Search" name="search"/>
-            </div>
-
-        </form>
-
+    <main class="HolyGrail-content">
         {% include 'twig/results.twig' %}
-
         {% include 'twig/pagination.twig' %}
-    </div>
+    </main>
+    {% include 'twig/nav.twig' %}
+    {#<aside class="HolyGrail-ads">…</aside>#}
 
-    {% include "common/jsblock.html" %}
-
-    <w-literal>
-        {% include 'common/ga.html' %}
-    </w-literal>
+    {% include 'common/ga.html' %}
 
 </div>
 
 {% include "common/footer.html" %}
 
 {% include "common/modal-examples.html" %}
+
+{% include "common/jsblock.html" %}
 
 </body>
 </html>

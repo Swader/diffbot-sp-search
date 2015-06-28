@@ -1,6 +1,13 @@
 #Changelog
 All notable changes will be documented in this file
 
+## 0.4 - June 28th, 2015
+
+- changed design (fixes #9)
+- fixed keyword bug #10
+- extracted more template fragments
+- added FAQ page
+
 ## 0.3 - June 17th, 2015
 
 - ability to search by Twitter handle (experimental)

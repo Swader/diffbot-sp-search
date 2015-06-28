@@ -1,5 +1,31 @@
 <header>
-    <h3>SitePoint
-        <small>search</small>
-    </h3>
+    <div class="title"><a class="logomark" href="/"><img
+            src="http://www.sitepoint.com/wp-content/themes/sitepoint/assets/svg/sitepoint.svg"
+            alt="SitePoint logo"/></a></div>
+
+    <ul class="right">
+        <li class="">
+            <a href="/faq.html"
+               tabindex="3">FAQ</a>
+        </li>
+        <li class="">
+            <a href="/what.html" tabindex="4">About</a>
+        </li>
+        <li class="top-bar_search">
+            <form method="get" action="" class="submit-once">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" id="q"
+                           placeholder="Full search query"/>
+                    <input type="hidden" name="search" value="submit"/>
+<span class="input-group-btn">
+    <button class="btn btn-default" type="button"
+            data-toggle="modal"
+            data-target="#examples-table">?
+    </button>
+</span>
+                </div>
+
+            </form>
+        </li>
+    </ul>
 </header>
