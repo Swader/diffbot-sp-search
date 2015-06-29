@@ -9,20 +9,26 @@ $(document).ready(function () {
         $('#submit').addClass('disabled');
     });
 
-    var dsg = $('.detailed-search-group');
-    var ms = $('.main-search');
+    //var dsg = $('.detailed-search-group');
+    //var ms = $('.main-search');
+    //
+    //if (localStorage.getItem('detailed-on') == "true") {
+    //    dsg.show();
+    //    ms.hide();
+    //} else {
+    //    dsg.hide();
+    //    ms.show();
+    //}
+    //
+    //$(".detailed-search").click(function (e) {
+    //    ms.toggle();
+    //    dsg.toggle();
+    //    localStorage.setItem('detailed-on', dsg.is(':visible'));
+    //});
 
-    if (localStorage.getItem('detailed-on') == "true") {
-        dsg.show();
-        ms.hide();
-    } else {
-        dsg.hide();
-        ms.show();
-    }
-
-    $(".detailed-search").click(function (e) {
-        ms.toggle();
-        dsg.toggle();
-        localStorage.setItem('detailed-on', dsg.is(':visible'));
+    $('a.hamburger-details').click(function(e) {
+        $('.HolyGrail-nav').toggle();
+        $('#q').prop('disabled', function(i, v) { return !v; });
     });
+
 });

@@ -1,6 +1,12 @@
 #Changelog
 All notable changes will be documented in this file
 
+## 0.5 - July 01st, 2015
+
+- removed page flicker on load and added transition to logo (issue #11)
+- added all around darker theme, removed silly rounded bootstrap corners
+- optimized for smaller screens
+
 ## 0.4 - June 28th, 2015
 
 - changed design (fixes #9)

@@ -1,7 +1,12 @@
 <nav class="HolyGrail-nav">
     <form id="main-form" class="submit-once">
 
-        <div class="detailed-search-group" style="display: none;">
+        <div class="detailed_search_heading">
+            <h5 class="heading">Detailed Search</h5>
+            <div class="sexy_line"></div>
+        </div>
+
+        <div class="detailed-search-group">
             {% include "twig/controls/authors.twig" %}
             {% include "twig/controls/keywords.twig" %}
             {% include "twig/controls/twitter.twig" %}
