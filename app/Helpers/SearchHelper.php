@@ -15,7 +15,7 @@ class SearchHelper
         $this->dateCheck($queryParams);
         $this->sortCheck($queryParams);
 
-        if (empty($this->strings)) {
+        if (empty($this->strings) && empty($this->appendStrings)) {
             die("Please provide at least *some* search values!");
         }
 
