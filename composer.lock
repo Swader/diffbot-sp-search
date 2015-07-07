@@ -356,6 +356,7 @@
                     "Webiny\\Htpl\\": "src/Webiny/Htpl/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -374,10 +375,6 @@
             "keywords": [
                 "template engine"
             ],
-            "support": {
-                "source": "https://github.com/Webiny/Htpl/tree/master",
-                "issues": "https://github.com/Webiny/Htpl/issues"
-            },
             "time": "2015-06-14 15:25:58"
         }
     ],

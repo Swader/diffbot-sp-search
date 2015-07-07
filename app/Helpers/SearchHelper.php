@@ -12,6 +12,7 @@ class SearchHelper
         $this->authorCheck($queryParams);
         $this->keywordCheck($queryParams);
         $this->twitterCheck($queryParams);
+        $this->dateCheck($queryParams);
         $this->sortCheck($queryParams);
 
         if (empty($this->strings)) {
@@ -103,6 +104,17 @@ class SearchHelper
 
         if (!empty($string)) {
             $this->strings[] = '(' . $string . ')';
+        }
+    }
+
+    protected function dateCheck(array $queryParams)
+    {
+        if (isset($queryParams['date-from']) && !empty($queryParams['date-from'])) {
+            $this->appendStrings[] = 'min:date:' . strtotime($queryParams['date-from']);
+        }
+
+        if (isset($queryParams['date-to']) && !empty($queryParams['date-to'])) {
+            $this->appendStrings[] = 'max:date:' . strtotime($queryParams['date-to']);
         }
     }
 }

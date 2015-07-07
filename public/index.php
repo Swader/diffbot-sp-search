@@ -7,22 +7,9 @@ use Swader\Diffbot\Entity\Article;
 
 require_once '../vendor/autoload.php';
 require_once '../token.php';
+require_once '../app/config/templating.php';
 
-$loader = new Twig_Loader_Filesystem(__DIR__ . '/../template');
-$twig = new Twig_Environment($loader
-//   , array('cache' => __DIR__ . '/../cache',)
-    , array('cache' => false, 'debug' => true)
-);
-
-$function = new Twig_SimpleFunction('qprw', function (array $replacements) {
-    parse_str($_SERVER['QUERY_STRING'], $qp);
-    foreach ($replacements as $k => $v) {
-        $qp[$k] = $v;
-    }
-
-    return '?' . http_build_query($qp);
-});
-$twig->addFunction($function);
+$view = new TemplateConfigurator(TemplateConfigurator::TWIG, true);
 
 $vars = ['showResults' => false];
 
@@ -54,7 +41,7 @@ if (isset($queryParams['search'])) {
         ->setStart(($queryParams['page'] - 1) * $resultsPerPage)
         ->setNum($resultsPerPage);
 
-    //die($search->buildUrl());
+//    die($search->buildUrl());
 
     // Add to template for rendering
     $results = $search->call();
@@ -64,11 +51,6 @@ if (isset($queryParams['search'])) {
     $uniques = [];
     /** @var Article $article */
     foreach ($results as $i => $article) {
-
-        if (strpos($article->getResolvedPageUrl(), '/sass-reference/')) {
-            $results->offsetUnset($i);
-            continue;
-        }
 
         if (in_array($article->getResolvedPageUrl(), $uniques)) {
             $results->offsetUnset($i);
@@ -91,8 +73,6 @@ if (isset($queryParams['search'])) {
         }
     }
 
-
-
     $ph = new PaginationHelper();
     $vars = [
         'showResults' => true,
@@ -104,4 +84,5 @@ if (isset($queryParams['search'])) {
     ];
 }
 
-echo $twig->render('twig/home.twig', $vars);
+$view->setAll($vars);
+$view->render('home');

@@ -1,6 +1,13 @@
 #Changelog
 All notable changes will be documented in this file
 
+## 0.6 - July 7th, 2015
+
+- brought back Sass Reference results, now allowed to be indexed
+- starting conversion to Htpl template engine
+- added more information into about and FAQ
+- added date range filters
+
 ## 0.5 - July 01st, 2015
 
 - removed page flicker on load and added transition to logo (issue #11)

@@ -1,0 +1,16 @@
+<div class="form-group">
+    <label for="kanyinput">Keywords (any): </label><input
+            class="form-control"
+            id="kanyinput"
+            name="keywords_any"
+            type="text"
+            placeholder="sitepoint, diffbot, whatever"/>
+</div>
+<div class="form-group">
+    <label for="kallinput">Keywords (all): </label><input
+            class="form-control"
+            id="kallinput"
+            name="keywords_all"
+            type="text"
+            placeholder="sitepoint, diffbot, whatever"/>
+</div>

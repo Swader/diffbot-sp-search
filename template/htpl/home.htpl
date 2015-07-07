@@ -1,140 +1,33 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>SitePoint Search</title>
-    <meta name="description" content="Diffbot-powered SitePoint Search Engine">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<w-include file="common/head.html"/>
 
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<body class="HolyGrail">
 
-    <link rel="stylesheet" href="/bower_components/normalize.css/normalize.css">
-    <link rel="stylesheet"
-          href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/assets/css/main.css">
+<w-include file="common/ribbon.html"/>
 
-</head>
-<body>
 <img src="/assets/img/sp_square.png" alt="" class="bg"/>
-<header>
-    <h3>SitePoint
-        <small>search</small>
-    </h3>
-</header>
-<div class="content">
-    <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong>
-        browser.
-        Please <a href="http://browsehappy.com/">upgrade your browser</a> to
-        improve
-        your experience.</p>
-    <![endif]-->
 
+<w-include file="common/header.html"/>
 
-    <div class="search-form">
-        <form>
+<div class="content HolyGrail-body">
+    <main class="HolyGrail-content">
+        <w-include file="htpl/results.htpl"/>
+        <w-include file="htpl/pagination.htpl"/>
+    </main>
+    <w-include file="htpl/nav.htpl"/>
+    {#
+    <aside class="HolyGrail-ads">…</aside>
+    #}
 
-            <div class="main-search form-group">
-                <div class="input-group">
-                    <input class="form-control" type="text" name="q" id="q"
-                           placeholder="Full search query"/>
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"
-                            data-toggle="modal"
-                            data-target="#examples-table">?
-                    </button>
-                </span>
-                </div>
-                <a href="#" class="small detailed-search">>> Toggle Detailed
-                    searching</a>
-            </div>
-
-            <div class="detailed-search-group" style="display: none;">
-                <div class="form-group">
-                    <label for="authorinput">Author(s): </label><input
-                        class="form-control"
-                        id="authorinput"
-                        name="authors"
-                        type="text"
-                        placeholder="Bruno Skvorc"/>
-                </div>
-                <div class="form-group">
-                    <label for="kanyinput">Keywords (any): </label><input
-                        class="form-control"
-                        id="kanyinput"
-                        name="keywords_any"
-                        type="text"
-                        placeholder="sitepoint, diffbot, whatever"/>
-                </div>
-                <div class="form-group">
-                    <label for="kallinput">Keywords (all): </label><input
-                        class="form-control"
-                        id="kallinput"
-                        name="keywords_all"
-                        type="text"
-                        placeholder="sitepoint, diffbot, whatever"/>
-                    <a href="#" class="small detailed-search">>> Toggle Detailed
-                        searching</a>
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <input id="submit" class="btn btn-default" type="submit"
-                       value="Search" name="search"/>
-            </div>
-            <w-if cond="somvar|length==0">
-                Some var!
-            </w-if>
-        </form>
-        <div class="results">
-                <w-if cond="results|length>0">
-                    <w-loop items="results" var="v" key="k">
-                        <div class="Media post">
-                            <img class="Media-figure" src="" alt="">
-
-                            <p class="Media-body">foo</p>
-
-                            <!--<p class="Media-body"><a target="_blank" href="{v.url}">{v.title}</a>-->
-                            <!--</p>-->
-
-                            <!--<p class="Media-body">{v.resurl}</p>-->
-
-                            <!--<p class="Media-body">{v.duri}</p>-->
-
-                            <!--<div class="Media author">-->
-                            <!--<img class="Media-figure" src="" alt="">-->
-
-                            <!--<p class="Media-body">…</p>-->
-                            <!--</div>-->
-                        </div>
-                    </w-loop>
-                    <w-elseif cond="results|length==0" />
-                        <p>No results found :(</p>
-                    <w-else />
-                </w-if>
-        </div>
-    </div>
-
-
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/assets/js/main.js"></script>
-
-    <w-include file="google-analytics.htpl"></w-include>
-
+    <w-literal>
+        <w-include file="common/ga.html"/>
+    </w-literal>
 </div>
-<footer>
-    <a href="../../public/what.html">What's this all about?</a>
-    <br>-<br>
-    Built by <a href="https://twitter.com/bitfalls">@bitfalls</a> for <a
-        href="http://sitepoint.com">SitePoint</a>. Hosted on <a
-        href="http://bit.ly/do-ref">DigitalOcean</a>.
-</footer>
 
-<w-include file="modal-examples.htpl"/>
+<w-include file="common/footer.html"/>
 
+<w-include file="common/modal-examples.html"/>
+
+<w-include file="common/jsblock.html"/>
 
 </body>
 </html>

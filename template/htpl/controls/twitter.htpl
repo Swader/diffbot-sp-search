@@ -1,0 +1,8 @@
+<div class="form-group">
+    <label for="twitterinput">Twitter Handle(s): </label><input
+            class="form-control"
+            id="twitterinput"
+            name="twitter"
+            type="text"
+            placeholder="@bitfalls"/>
+</div>

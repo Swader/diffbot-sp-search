@@ -9,6 +9,13 @@ $(document).ready(function () {
         $('#submit').addClass('disabled');
     });
 
+    $('.date').daterangepicker({
+        format: 'DD.MM.YYYY',
+        singleDatePicker: true,
+        maxDate: moment(),
+        showDropdowns: true
+    });
+
     //var dsg = $('.detailed-search-group');
     //var ms = $('.main-search');
     //
