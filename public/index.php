@@ -27,7 +27,12 @@ if (!isset($queryParams['page'])) {
 // Check if the search form was submitted
 if (isset($queryParams['search'])) {
 
-    $redis = new Client();
+    $redis = new Client('tcp://127.0.0.1', [
+        'connections' => [
+            'tcp'  => 'Predis\Connection\PhpiredisStreamConnection',  // PHP streams
+            'unix' => 'Predis\Connection\PhpiredisSocketConnection',  // ext-socket
+        ],
+    ]);
     $hash = md5($_SERVER['QUERY_STRING']);
     if (!$redis->get($hash . '-results')) {
 

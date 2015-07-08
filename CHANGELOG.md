@@ -3,7 +3,7 @@ All notable changes will be documented in this file
 
 ## 0.7 - July 8th, 2015
 
-- added Redis as cache. Queries are now cached for 24 hours. This serves as a base for the upcoming "frequent query refresh" functionality.
+- added Redis as cache. Queries are now cached for 24 hours. This serves as a base for the upcoming "frequent query refresh" functionality. Also added phpiredis for additional speed.
 - fixed an undefined offset bug in the SearchHelper
 
 ## 0.6 - July 7th, 2015
