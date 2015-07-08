@@ -6,6 +6,7 @@ class SearchHelper
 {
     protected $strings = [];
     protected $appendStrings = [];
+    protected $sort = '';
 
     public function stringFromParams(array $queryParams)
     {
@@ -19,18 +20,24 @@ class SearchHelper
             die("Please provide at least *some* search values!");
         }
 
-        return ((count($this->strings) > 1) ? implode(' AND ',
-            $this->strings) : $this->strings[0]) . ' ' . implode(' ',
-            $this->appendStrings);
+        $return = '';
+        if (count($this->strings) > 0) {
+            if (count($this->strings) > 1) {
+                $return .= implode(' AND ', $this->strings);
+            } else {
+                $return .= $this->strings[0];
+            }
+        }
+        return $return.' '.implode(' ', $this->appendStrings).' '.$this->sort;
     }
 
     protected function sortCheck(array $queryParams)
     {
         if (isset($queryParams['sort']) && !empty($queryParams['sort'])) {
             $operator = (isset($queryParams['dir']) && $queryParams['dir'] == 'asc') ? "revsortby:" : "sortby:";
-            $this->appendStrings[] = $operator . $queryParams['sort'];
+            $this->sort = $operator . $queryParams['sort'];
         } else {
-            $this->appendStrings[] = "sortby:date";
+            $this->sort = "sortby:date";
         }
     }
 

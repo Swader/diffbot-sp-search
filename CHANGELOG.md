@@ -1,6 +1,11 @@
 #Changelog
 All notable changes will be documented in this file
 
+## 0.7 - July 8th, 2015
+
+- added Redis as cache. Queries are now cached for 24 hours. This serves as a base for the upcoming "frequent query refresh" functionality.
+- fixed an undefined offset bug in the SearchHelper
+
 ## 0.6 - July 7th, 2015
 
 - brought back Sass Reference results, now allowed to be indexed

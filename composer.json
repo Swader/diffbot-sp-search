@@ -2,7 +2,8 @@
     "require": {
         "webiny/htpl": "dev-master",
         "twig/twig": "^1.18",
-        "swader/diffbot-php-client": "^0.4.4"
+        "swader/diffbot-php-client": "^0.4.4",
+        "predis/predis": "^1.0"
     },
   "repositories": [
     {

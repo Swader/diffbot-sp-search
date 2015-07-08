@@ -1,5 +1,6 @@
 <?php
 
+use Predis\Client;
 use SitePoint\Helpers\PaginationHelper;
 use SitePoint\Helpers\SearchHelper;
 use Swader\Diffbot\Diffbot;
@@ -26,26 +27,36 @@ if (!isset($queryParams['page'])) {
 // Check if the search form was submitted
 if (isset($queryParams['search'])) {
 
-    $diffbot = new Diffbot(DIFFBOT_TOKEN);
+    $redis = new Client();
+    $hash = md5($_SERVER['QUERY_STRING']);
+    if (!$redis->get($hash . '-results')) {
 
-    // Building the search string
-    $searchHelper = new SearchHelper();
-    $string = (isset($queryParams['q']) && !empty($queryParams['q']))
-        ? $queryParams['q']
-        : $searchHelper->stringFromParams($queryParams);
+        $diffbot = new Diffbot(DIFFBOT_TOKEN);
 
-    // Basics
-    $search = $diffbot
-        ->search($string)
-        ->setCol('sp_search')
-        ->setStart(($queryParams['page'] - 1) * $resultsPerPage)
-        ->setNum($resultsPerPage);
+        // Building the search string
+        $searchHelper = new SearchHelper();
+        $string = (isset($queryParams['q']) && !empty($queryParams['q']))
+            ? $queryParams['q']
+            : $searchHelper->stringFromParams($queryParams);
+
+        // Basics
+        $search = $diffbot
+            ->search($string)
+            ->setCol('sp_search')
+            ->setStart(($queryParams['page'] - 1) * $resultsPerPage)
+            ->setNum($resultsPerPage);
 
 //    die($search->buildUrl());
 
-    // Add to template for rendering
-    $results = $search->call();
-    $info = $search->call(true);
+        $redis->set($hash . '-results', serialize($search->call()));
+        $redis->expire($hash . '-results', 86400);
+        $redis->set($hash . '-info', serialize($search->call(true)));
+        $redis->expire($hash . '-info', 86400);
+
+    }
+
+    $results = unserialize($redis->get($hash . '-results'));
+    $info = unserialize($redis->get($hash . '-info'));
 
     // Clean up and alter results
     $uniques = [];
